@@ -1,4 +1,5 @@
 # Email Amender
+[![Build Status](https://travis-ci.com/geoffdutton/email-amender.svg?branch=master)](https://travis-ci.com/geoffdutton/email-amender)
 
 An opinionated library on how to correct fat-figured and mis-typed email addresses from user input.
 
