@@ -19,8 +19,6 @@ const amend = email => {
     domain
   ] = email.split('@')
 
-  const emailParts = email.split('@')
-
   const domainParts = domain.split('.')
 
   // @TODO: Handle two-part TOLDs like .co.uk

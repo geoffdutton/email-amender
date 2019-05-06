@@ -1,4 +1,5 @@
 # Email Amender
+
 An opinionated library on how to correct fat-figured and mis-typed email addresses from user input.
 
 ## How it Works
