@@ -1,41 +1,48 @@
 
 const FuzzySet = require('fuzzyset.js')
-const commonTlds = require('./common-tlds')
-const commonSlds = require('./common-slds')
-const commonTldsFuzzySet = new FuzzySet(commonTlds)
-const commonSldsFuzzySet = new FuzzySet(commonSlds)
+const commonTLDs = require('./common-tlds')
+const commonSLDs = require('./common-slds')
+const commonTLDsFuzzySet = new FuzzySet(commonTLDs)
+const commonSLDsFuzzySet = new FuzzySet(commonSLDs)
 
-const beginsWithTld = tld =>
-  commonTlds.find(commonTld => tld.indexOf(commonTld) === 0)
+const beginsWithTld = TLD =>
+  commonTLDs.find(commonTLD => TLD.indexOf(commonTLD) === 0)
 
 const amend = email => {
-  email = email.trim().toLocaleLowerCase()
+  email = email.trim().toLowerCase()
   if (!email) {
     return null
   }
+
+  const [
+    userName,
+    domain
+  ] = email.split('@')
+
   const emailParts = email.split('@')
 
-  const domainParts = emailParts[1].split('.')
+  const domainParts = domain.split('.')
 
-  let tld = domainParts.pop()
-  let sld = domainParts.pop()
+  // @TODO: Handle two-part TOLDs like .co.uk
+  let TLD = domainParts.pop()
+  let SLD = domainParts.pop()
 
   // does not exist
-  if (commonTlds.indexOf(tld) === -1) {
-    const beginsWithResult = beginsWithTld(tld)
+  if (commonTLDs.indexOf(TLD) === -1) {
+    const beginsWithResult = beginsWithTld(TLD)
 
     if (beginsWithResult) {
-      tld = beginsWithResult
+      TLD = beginsWithResult
     } else {
-      const fuzzyReuslt = commonTldsFuzzySet.get(tld)
+      const fuzzyReuslt = commonTLDsFuzzySet.get(TLD)
       if (fuzzyReuslt) {
-        tld = fuzzyReuslt[0][1]
+        TLD = fuzzyReuslt[0][1]
       }
     }
   }
 
-  if (commonSlds.indexOf(sld) === -1) {
-    const fuzzyReuslt = commonSldsFuzzySet.get(sld)
+  if (commonSLDs.indexOf(SLD) === -1) {
+    const fuzzyReuslt = commonSLDsFuzzySet.get(SLD)
     if (fuzzyReuslt) {
       const [
         probability,
@@ -43,7 +50,7 @@ const amend = email => {
       ] = fuzzyReuslt[0]
       // console.log(sld, probability, result)
       if (probability > 0.8) {
-        sld = result
+        SLD = result
       }
     }
   }
@@ -53,7 +60,7 @@ const amend = email => {
     subDomainParts += '.'
   }
 
-  return `${emailParts[0]}@${subDomainParts}${sld}.${tld}`
+  return `${userName}@${subDomainParts}${SLD}.${TLD}`
 }
 
 module.exports = {

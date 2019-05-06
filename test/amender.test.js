@@ -2,65 +2,79 @@
 const test = require('ava')
 const amender = require('../src/amender')
 
+const userName = Math.random()
+  .toString(36)
+  .substring(2, 15) +
+  Math.random()
+    .toString(36)
+    .substring(2, 15)
+
 const testCases = {
-  '     ': null,
-  'fake@gmail.com': 'fake@gmail.com',
-  'fake.probably@aol.comssse': 'fake.probably@aol.com',
-  'fake@gmail.comf': 'fake@gmail.com',
-  'FAKE@CONSOLIDATED.NRT': 'fake@consolidated.net',
-  'fake@gmail.vom': 'fake@gmail.com',
-  'fake@rocketmail.ccom': 'fake@rocketmail.com',
-  'fake@gmail.cim': 'fake@gmail.com',
-  'fake@gmail.xom': 'fake@gmail.com',
-  'fake@gmail.comm': 'fake@gmail.com',
-  'fake@yahoo.dom': 'fake@yahoo.com',
-  'fake@midiowa.netr': 'fake@midiowa.net',
-  'fake@hotmail.con': 'fake@hotmail.com',
-  'fake@fecompany.som': 'fake@fecompany.com',
-  'fake@gmail.cvom': 'fake@gmail.com',
-  'fake@yahoo.comk': 'fake@yahoo.com',
-  'fake@att.met': 'fake@att.net',
-  'fake@gmail.coom': 'fake@gmail.com',
-  'fake@charter.bnet': 'fake@charter.net',
-  'fake@yale.rdu': 'fake@yale.edu',
-  'fake@aol.coml': 'fake@aol.com',
-  'fake@vweizon.ney': 'fake@vweizon.net',
-  'fake@sbcgloobal.nt': 'fake@sbcglobal.net',
-  'fake@yahoo.comenjamin': 'fake@yahoo.com',
-  'fake@yahoo.con': 'fake@yahoo.com',
-  'fake@telus.nt': 'fake@telus.net',
-  'fake@msn.comm': 'fake@msn.com',
-  'fake@centurylink.nety': 'fake@centurylink.net',
-  'fake@gmail.con': 'fake@gmail.com',
-  'fake@yahoo.comm': 'fake@yahoo.com',
-  'fake@aol.clm': 'fake@aol.com',
-  'fake@aol.ciom': 'fake@aol.com',
-  'fake@yahoo.cfom': 'fake@yahoo.com',
-  'fake@yahoo.xcom': 'fake@yahoo.com',
-  'fake@gmail.come': 'fake@gmail.com',
-  'fake@augusta.edung': 'fake@augusta.edu',
-  'fake@zoominternet.nett': 'fake@zoominternet.net',
-  'fake@gte.met': 'fake@gte.net',
-  'fake@columbiae.du': 'fake@columbia.edu',
-  'fake@cinci.rr.vom': 'fake@cinci.rr.com',
-  'fake@att.att': 'fake@att.net',
-  'fake@gmail.comy': 'fake@gmail.com',
-  'fake@sbcglobal.nt': 'fake@sbcglobal.net',
-  'fake@aol.acom': 'fake@aol.com',
-  'fake@att.nert': 'fake@att.net',
-  'fake@aol.dom': 'fake@aol.com',
-  'fake@amsat.ord': 'fake@amsat.org',
-  'fake@aol.vom': 'fake@aol.com',
-  'fake@comcast.nett': 'fake@comcast.net',
-  'fake@comcast.ner': 'fake@comcast.net',
-  'fake@aol.coom': 'fake@aol.com',
-  'fake@msn.con': 'fake@msn.com'
+  '@gmail.com': '@gmail.com',
+  '@aol.comssse': '@aol.com',
+  '@gmail.comf': '@gmail.com',
+  '@CONSOLIDATED.NRT': '@consolidated.net',
+  '@gmail.vom': '@gmail.com',
+  '@rocketmail.ccom': '@rocketmail.com',
+  '@gmail.cim': '@gmail.com',
+  '@gmail.xom': '@gmail.com',
+  '@gmail.comm': '@gmail.com',
+  '@yahoo.dom': '@yahoo.com',
+  '@midiowa.netr': '@midiowa.net',
+  '@hotmail.con': '@hotmail.com',
+  '@fecompany.som': '@fecompany.com',
+  '@gmail.cvom': '@gmail.com',
+  '@yahoo.comk': '@yahoo.com',
+  '@att.met': '@att.net',
+  '@gmail.coom': '@gmail.com',
+  '@charter.bnet': '@charter.net',
+  '@yale.rdu': '@yale.edu',
+  '@aol.coml': '@aol.com',
+  '@vweizon.ney': '@vweizon.net',
+  '@sbcgloobal.nt': '@sbcglobal.net',
+  '@yahoo.comenjamin': '@yahoo.com',
+  '@yahoo.con': '@yahoo.com',
+  '@telus.nt': '@telus.net',
+  '@msn.comm': '@msn.com',
+  '@centurylink.nety': '@centurylink.net',
+  '@gmail.con': '@gmail.com',
+  '@yahoo.comm': '@yahoo.com',
+  '@aol.clm': '@aol.com',
+  '@aol.ciom': '@aol.com',
+  '@yahoo.cfom': '@yahoo.com',
+  '@yahoo.xcom': '@yahoo.com',
+  '@gmail.come': '@gmail.com',
+  '@augusta.edung': '@augusta.edu',
+  '@zoominternet.nett': '@zoominternet.net',
+  '@gte.met': '@gte.net',
+  '@columbiae.du': '@columbia.edu',
+  '@cinci.rr.vom': '@cinci.rr.com',
+  '@att.att': '@att.net',
+  '@gmail.comy': '@gmail.com',
+  '@sbcglobal.nt': '@sbcglobal.net',
+  '@aol.acom': '@aol.com',
+  '@att.nert': '@att.net',
+  '@aol.dom': '@aol.com',
+  '@amsat.ord': '@amsat.org',
+  '@aol.vom': '@aol.com',
+  '@comcast.nett': '@comcast.net',
+  '@comcast.ner': '@comcast.net',
+  '@aol.coom': '@aol.com',
+  '@msn.con': '@msn.com'
 
 }
 
 Object.keys(testCases).forEach(badEmail => {
   const goodEmail = testCases[badEmail]
+
   test(`corrects ${badEmail} => ${goodEmail}`, t => {
-    t.is(amender.amend(badEmail), goodEmail)
+    t.is(
+      amender.amend(userName + badEmail),
+      userName + goodEmail
+    )
   })
+})
+
+test('returns null if passed value is falsy', t => {
+  t.is(amender.amend('    '), null)
 })
