@@ -13,3 +13,6 @@ An opinionated library on how to correct fat-figured and mis-typed email address
 
 ## Development
 Just run `yarn`, and then run `yarn test` to see if everything is working right.
+
+## Credits
+- Jaideep Srivastava ([@jaideepsrivastava](https://github.com/jaideepsrivastava))
