@@ -4,11 +4,13 @@ const amender = require('../src/amender')
 const userName = require('./support/helpers').magicId()
 
 if (process.env.EMAIL_AMENDER_FAILING_TESTS) {
-  // Failing test cases
-  test('testing @cableone.ent', t => {
+  // Sanity check test
+  test('testing waste of resources', t => {
     t.is(
-      amender.amend(userName + '@cableone.ent'),
-      userName + '@cableone.net'
+      amender.amend(userName + '@wastestuff.com'),
+      userName + '@wastestuff.com'
     )
   })
+
+  // Failing test cases go under here:
 }

@@ -34,8 +34,8 @@ const amend = email => {
 
   let TLDwasChanged = false
 
-  // @TODO: Do something real here
-  if (TLD === 'bell') {
+  // @TODO: Do something real here as it's not scalable
+  if (TLD === 'bell' || TLD === 'ent') {
     TLDwasChanged = true
     TLD = 'net'
   }

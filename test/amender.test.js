@@ -187,3 +187,10 @@ test('testing @rrcom', t => {
     userName + '@rr.com'
   )
 })
+
+test('testing @cableone.ent', t => {
+  t.is(
+    amender.amend(userName + '@cableone.ent'),
+    userName + '@cableone.net'
+  )
+})
