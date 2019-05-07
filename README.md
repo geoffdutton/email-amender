@@ -1,11 +1,13 @@
 # Email Amender
 [![Build Status](https://travis-ci.com/geoffdutton/email-amender.svg?branch=master)](https://travis-ci.com/geoffdutton/email-amender)
 
+[![npm version](https://badge.fury.io/js/email-amender.svg)](https://badge.fury.io/js/email-amender)
+
 An opinionated library on how to correct fat-figured and mis-typed email addresses from user input.
 
 ## How it Works
 1) It trims and lowercases the input email address. If it's falsy, i.e. it returns null.
-2) Then it splits the email string into domain, TLD (Top Level Domain), and SLD (Second Level Domain). **None**: `.co.uk` among other non-US TLDs would break this, which will be addressed in future versions of Email Amender.
+2) Then it splits the email string into domain, TLD (Top Level Domain), and SLD (Second Level Domain). **Note**: `.co.uk` among other non-US TLDs would break this, which will be addressed in future versions of Email Amender.
 3) It checks to see if the `TLD` exists in a common [list of TLDs](/src/common-tlds.js). If so it skips to the next step. Otherwise:
     1) It first checks to the ceo the user input TLD begins with one of the common TLDs, which is a cheap check to see if extra letters happened to be added on. An example would be when a user thinks they've moved to the nexxt form field, and started typing more into the email address input field.
     2) If there is nothing found, it uses [fuzzyset.js](http://glench.github.io/fuzzyset.js/) to fine the nearest probable match to one of the common TLDs.
