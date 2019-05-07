@@ -28,6 +28,11 @@ const amend = email => {
   let TLD = domainParts.pop()
   let SLD = domainParts.pop()
 
+  let subDomainParts = domainParts.join('.')
+  if (subDomainParts) {
+    subDomainParts += '.'
+  }
+
   // does not exist
   if (commonTLDs.indexOf(TLD) === -1) {
     const beginsWithResult = beginsWithTLD(TLD)
@@ -54,11 +59,6 @@ const amend = email => {
         SLD = result
       }
     }
-  }
-
-  let subDomainParts = domainParts.join('.')
-  if (subDomainParts) {
-    subDomainParts += '.'
   }
 
   return `${userName}@${subDomainParts}${SLD}.${TLD}`
