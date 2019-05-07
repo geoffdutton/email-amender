@@ -8,8 +8,8 @@ const commonSLDsFuzzySet = new FuzzySet(commonSLDs)
 const beginsWithTLD = TLD =>
   commonTLDs.find(commonTLD => TLD.indexOf(commonTLD) === 0)
 
-// const beginsWithSLD = SLD =>
-//   commonSLDs.find(commonSLD => SLD.indexOf(commonSLD) === 0)
+const beginsWithSLD = SLD =>
+  commonSLDs.find(commonSLD => SLD.indexOf(commonSLD) === 0)
 
 const amend = email => {
   email = email.trim().toLowerCase()
@@ -28,9 +28,12 @@ const amend = email => {
   let TLD = domainParts.pop()
   let SLD = domainParts.pop()
 
-  let subDomainParts = domainParts.join('.')
-  if (subDomainParts) {
-    subDomainParts += '.'
+  let TLDwasChanged = false
+
+  // @TODO: Do something real here
+  if (TLD === 'bell') {
+    TLDwasChanged = true
+    TLD = 'net'
   }
 
   // does not exist
@@ -39,15 +42,35 @@ const amend = email => {
 
     if (beginsWithResult) {
       TLD = beginsWithResult
-    } else {
+      TLDwasChanged = true
+    }
+
+    if (!TLDwasChanged) {
+      const beginsWithSLDResult = beginsWithSLD(TLD)
+      if (beginsWithSLDResult) {
+        const _prevTLD = TLD
+        TLD = TLD.replace(beginsWithSLDResult, '')
+        if (TLD) {
+          // do this before modifying SLD
+          if (SLD) {
+            domainParts.push(SLD)
+          }
+          SLD = beginsWithSLDResult
+          TLDwasChanged = true
+        } else {
+          TLD = _prevTLD
+        }
+      }
+
       const fuzzyReuslt = commonTLDsFuzzySet.get(TLD)
       if (fuzzyReuslt) {
         TLD = fuzzyReuslt[0][1]
+        TLDwasChanged = true
       }
     }
   }
 
-  if (commonSLDs.indexOf(SLD) === -1) {
+  if (TLDwasChanged || commonSLDs.indexOf(SLD) === -1) {
     const fuzzyReuslt = commonSLDsFuzzySet.get(SLD)
     if (fuzzyReuslt) {
       const [
@@ -59,6 +82,11 @@ const amend = email => {
         SLD = result
       }
     }
+  }
+
+  let subDomainParts = domainParts.join('.')
+  if (subDomainParts) {
+    subDomainParts += '.'
   }
 
   return `${userName}@${subDomainParts}${SLD}.${TLD}`

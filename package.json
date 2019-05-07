@@ -10,8 +10,9 @@
     "nyc": "^14.1.0"
   },
   "scripts": {
-    "test": "nyc ava",
-    "tdd": "ava --watch"
+    "test": "nyc ava test/amender.test.js",
+    "test:failing": "EMAIL_AMENDER_FAILING_TESTS=yep nyc ava test/amender-failing.test.js",
+    "tdd": "EMAIL_AMENDER_FAILING_TESTS=yep ava --watch"
   },
   "dependencies": {
     "fuzzyset.js": "^0.0.8"

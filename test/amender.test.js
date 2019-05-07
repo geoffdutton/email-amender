@@ -2,12 +2,7 @@
 const test = require('ava')
 const amender = require('../src/amender')
 
-const userName = Math.random()
-  .toString(36)
-  .substring(2, 15) +
-  Math.random()
-    .toString(36)
-    .substring(2, 15)
+const userName = require('./support/helpers').magicId()
 
 const testCases = {
   '@gmail.com': '@gmail.com',
@@ -161,24 +156,28 @@ test('returns null if passed value is falsy', t => {
   t.is(amender.amend('    '), null)
 })
 
-// Failing test cases
-test.skip('testing @maine.rrcom', t => {
+// These are one off test cases that should probably
+// be organized at some point
+//
+// As you solve the test cases in amender-failing.test.js,
+// paste them below this line
+test('testing @bellsouth.bell', t => {
+  t.is(
+    amender.amend(userName + '@bellsouth.bell'),
+    userName + '@bellsouth.net'
+  )
+})
+
+test('testing @maine.rrcom', t => {
   t.is(
     amender.amend(userName + '@maine.rrcom'),
     userName + '@maine.rr.com'
   )
 })
 
-test.skip('testing @cableone.ent', t => {
+test('testing @rrcom', t => {
   t.is(
-    amender.amend(userName + '@cableone.ent'),
-    userName + '@cableone.net'
-  )
-})
-
-test.skip('testing @bellsouth.bell', t => {
-  t.is(
-    amender.amend(userName + '@bellsouth.bell'),
-    userName + '@bellsouth.net'
+    amender.amend(userName + '@rrcom'),
+    userName + '@rr.com'
   )
 })
