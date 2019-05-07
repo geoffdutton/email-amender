@@ -17,6 +17,10 @@ const amend = email => {
     return null
   }
 
+  if (email.indexOf('.') === 0) {
+    email = email.substr(1)
+  }
+
   const [
     userName,
     domain

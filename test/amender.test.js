@@ -141,12 +141,18 @@ const testCases = {
   '@yahoo.ocm': '@yahoo.com'
 }
 
-Object.keys(testCases).forEach(badEmail => {
+Object.keys(testCases).forEach((badEmail, i) => {
   const goodEmail = testCases[badEmail]
+
+  let _userName = userName
+  if (i === 2) {
+    // add an extra dot in front of the email
+    _userName = '.' + _userName
+  }
 
   test(`corrects ${badEmail} => ${goodEmail}`, t => {
     t.is(
-      amender.amend(userName + badEmail),
+      amender.amend(_userName + badEmail),
       userName + goodEmail
     )
   })
