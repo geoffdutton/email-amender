@@ -1,6 +1,6 @@
 {
   "name": "email-amender",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Rectify your user email address inputs from common spelling mistakes, probably due to the new MacBook Pro keyboard.",
   "main": "index.js",
   "author": "Geoff Dutton <g.dutton@gmail.com>",
