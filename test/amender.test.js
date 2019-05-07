@@ -60,8 +60,81 @@ const testCases = {
   '@comcast.nett': '@comcast.net',
   '@comcast.ner': '@comcast.net',
   '@aol.coom': '@aol.com',
-  '@msn.con': '@msn.com'
+  '@msn.con': '@msn.com',
 
+  // more cases
+  '@adams.neet': '@adams.net',
+  '@ameritech.met': '@ameritech.net',
+  '@aol.ccom': '@aol.com',
+  '@aol.comb': '@aol.com',
+  '@aol.comemail': '@aol.com',
+  '@aol.con': '@aol.com',
+  '@aol.lcolm': '@aol.com',
+  '@att.n': '@att.net',
+  '@att.ner': '@att.net',
+  '@att.ney': '@att.net',
+  '@bell.ney': '@bell.net',
+  '@bellsouth.bell': '@bellsouth.net',
+  '@bellsouth.met': '@bellsouth.net',
+  '@bellsouth.nrt': '@bellsouth.net',
+  '@bigpond.con': '@bigpond.com',
+  '@cableone.ent': '@cableone.net',
+  '@columbus.rr.cxom': '@columbus.rr.com',
+  '@comcast.neet': '@comcast.net',
+  '@comcast.nent': '@comcast.net',
+  '@comcast.ney': '@comcast.net',
+  '@consolidated.nrt': '@consolidated.net',
+  '@cox.nert': '@cox.net',
+  '@embarqmail.coms': '@embarqmail.com',
+  '@embarqmail.ocm': '@embarqmail.com',
+  '@excite.ccom': '@excite.com',
+  '@g.mail': '@g.mail',
+  '@gmail.ccom': '@gmail.com',
+  '@gmail.cojm': '@gmail.com',
+  '@gmail.colm': '@gmail.com',
+  '@gmail.coma': '@gmail.com',
+  '@gmail.comethiong': '@gmail.com',
+  '@gmail.comk': '@gmail.com',
+  '@gmail.coml': '@gmail.com',
+  '@gmail.commama': '@gmail.com',
+  '@gmail.comn': '@gmail.com',
+  '@gmail.comom': '@gmail.com',
+  '@gmail.comse': '@gmail.com',
+  '@gmail.comz': '@gmail.com',
+  '@gmail.comzzzzzzzzzzzz': '@gmail.com',
+  '@gmail.cpm': '@gmail.com',
+  '@gmail.cxom': '@gmail.com',
+  '@gmail.ocm': '@gmail.com',
+  '@hotmai.coml': '@hotmail.com',
+  '@hotmail.clm': '@hotmail.com',
+  '@hotmail.coming': '@hotmail.com',
+  '@hotmail.coom': '@hotmail.com',
+  '@igc.og': '@igc.org',
+  '@live.comm': '@live.com',
+  '@live.como': '@live.com',
+  '@maine.rrcom': '@maine.rr.com',
+  '@metrocast.netr': '@metrocast.net',
+  '@nycap.rr..com': '@nycap.rr.com',
+  '@outlook.coom': '@outlook.com',
+  '@outlook.ocm': '@outlook.com',
+  '@q.comm': '@q.com',
+  '@s.dcsdk12.or': '@s.dcsdk12.org',
+  '@sbcglobal.neet': '@sbcglobal.net',
+  '@sking.biiz': '@sking.biz',
+  '@teamonecomm.c': '@teamonecomm.com',
+  '@verizon.nett': '@verizon.net',
+  '@verizon.nt': '@verizon.net',
+  '@vt.eduu': '@vt.edu',
+  '@yahoo.cojm': '@yahoo.com',
+  '@yahoo.coma': '@yahoo.com',
+  '@yahoo.come': '@yahoo.com',
+  '@yahoo.comh': '@yahoo.com',
+  '@yahoo.comn': '@yahoo.com',
+  '@yahoo.comoooo': '@yahoo.com',
+  '@yahoo.comrd': '@yahoo.com',
+  '@yahoo.coom': '@yahoo.com',
+  '@yahoo.cpm': '@yahoo.com',
+  '@yahoo.ocm': '@yahoo.com'
 }
 
 Object.keys(testCases).forEach(badEmail => {
@@ -78,3 +151,10 @@ Object.keys(testCases).forEach(badEmail => {
 test('returns null if passed value is falsy', t => {
   t.is(amender.amend('    '), null)
 })
+
+// test.only('testing blah', t => {
+//   t.is(
+//     amender.amend(userName + '@nycap.rr..com'),
+//     userName + '@nycap.rr.com'
+//   )
+// })

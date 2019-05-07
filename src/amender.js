@@ -5,8 +5,11 @@ const commonSLDs = require('./common-slds')
 const commonTLDsFuzzySet = new FuzzySet(commonTLDs)
 const commonSLDsFuzzySet = new FuzzySet(commonSLDs)
 
-const beginsWithTld = TLD =>
+const beginsWithTLD = TLD =>
   commonTLDs.find(commonTLD => TLD.indexOf(commonTLD) === 0)
+
+// const beginsWithSLD = SLD =>
+//   commonSLDs.find(commonSLD => SLD.indexOf(commonSLD) === 0)
 
 const amend = email => {
   email = email.trim().toLowerCase()
@@ -19,7 +22,7 @@ const amend = email => {
     domain
   ] = email.split('@')
 
-  const domainParts = domain.split('.')
+  const domainParts = domain.replace(/[.]+/g, '.').split('.')
 
   // @TODO: Handle two-part TOLDs like .co.uk
   let TLD = domainParts.pop()
@@ -27,7 +30,7 @@ const amend = email => {
 
   // does not exist
   if (commonTLDs.indexOf(TLD) === -1) {
-    const beginsWithResult = beginsWithTld(TLD)
+    const beginsWithResult = beginsWithTLD(TLD)
 
     if (beginsWithResult) {
       TLD = beginsWithResult
