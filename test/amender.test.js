@@ -138,7 +138,9 @@ const testCases = {
   '@yahoo.comrd': '@yahoo.com',
   '@yahoo.coom': '@yahoo.com',
   '@yahoo.cpm': '@yahoo.com',
-  '@yahoo.ocm': '@yahoo.com'
+  '@yahoo.ocm': '@yahoo.com',
+  '@sbcglobal.nbet': '@sbcglobal.net',
+  '@terranova.met': '@terranova.net'
 }
 
 Object.keys(testCases).forEach((badEmail, i) => {
