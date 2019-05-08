@@ -7,10 +7,12 @@
   "license": "MIT",
   "devDependencies": {
     "ava": "^1.4.1",
+    "codecov": "^3.3.0",
     "nyc": "^14.1.0"
   },
   "scripts": {
-    "test": "nyc ava test/amender.test.js",
+    "coverage": "codecov",
+    "test": "nyc --reporter=lcov --reporter=text ava test/amender.test.js",
     "test:failing": "EMAIL_AMENDER_FAILING_TESTS=yep nyc ava test/amender-failing.test.js",
     "tdd": "EMAIL_AMENDER_FAILING_TESTS=yep ava --watch"
   },
