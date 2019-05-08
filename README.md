@@ -1,6 +1,7 @@
 # Email Amender
 [![Build Status](https://travis-ci.com/geoffdutton/email-amender.svg?branch=master)](https://travis-ci.com/geoffdutton/email-amender)
 [![npm version](https://badge.fury.io/js/email-amender.svg)](https://badge.fury.io/js/email-amender)
+[![codecov](https://codecov.io/gh/geoffdutton/email-amender/branch/master/graph/badge.svg)](https://codecov.io/gh/geoffdutton/email-amender)
 
 An opinionated library on how to correct fat-figured and mis-typed email addresses from user input.
 
