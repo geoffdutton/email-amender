@@ -140,7 +140,32 @@ const testCases = {
   '@yahoo.cpm': '@yahoo.com',
   '@yahoo.ocm': '@yahoo.com',
   '@sbcglobal.nbet': '@sbcglobal.net',
-  '@terranova.met': '@terranova.net'
+  '@terranova.met': '@terranova.net',
+
+  '@aldine-isd.ojhb': '@aldine-isd.ojhb',
+  '@bellsouth.bell': '@bellsouth.net',
+  '@cableone.ent': '@cableone.net',
+  '@charter.nwet': '@charter.net',
+  '@comcast.nejt': '@comcast.net',
+  '@comcast.nrt': '@comcast.net',
+  '@cox.nety': '@cox.net',
+  '@gmai.coml': '@gmai.com',
+  '@gmail.comi': '@gmail.com',
+  '@gmail.comp': '@gmail.com',
+  '@gmail.copm': '@gmail.com',
+  '@hotmai.lcom': '@hotmail.com',
+  '@hotmail.ccom': '@hotmail.com',
+  '@hotmail.cvom': '@hotmail.com',
+  '@hotmail.ocm': '@hotmail.com',
+  '@icloud.comn': '@icloud.com',
+  '@icloud.comq': '@icloud.com',
+  '@maine.rrcom': '@maine.rr.com',
+  '@me.con': '@me.com',
+  '@minnkota.coom': '@minnkota.com',
+  '@sbcglobal.met': '@sbcglobal.net',
+  '@sbcglobal.netr': '@sbcglobal.net',
+  // '@wattlegps.vic': '@wattlegps.vic',
+  '@windstream.nnet': '@windstream.net'
 }
 
 Object.keys(testCases).forEach((badEmail, i) => {
