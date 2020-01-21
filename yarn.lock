@@ -1691,10 +1691,10 @@ funding@^1.0.0:
     term-size "^2.1.0"
     word-wrap "^1.2.3"
 
-fuzzyset.js@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/fuzzyset.js/-/fuzzyset.js-0.0.8.tgz#398311fb54a5f84221db2cb143ac8cf1e523ae50"
-  integrity sha512-wymI6DYJgCBDFUrIyA/M2gIjJPEWj40pnCf04+Dma0PaprQRrTRh9/Cmz1wl9jCJxA+iqrCqNrGYuq7lVOtzXQ==
+fuzzyset.js@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/fuzzyset.js/-/fuzzyset.js-0.0.9.tgz#4cd0d7a275a815e7b464172c436d3ec1544ef32b"
+  integrity sha512-FPUL3CTsubb6pbNffwt5+/MuOacc+nuwxtRJlbdpH9jVuFHh0DEhWZt5DPqbLiAVF/eIgy3u0y+Vd55UR6xTMQ==
 
 get-caller-file@^2.0.1:
   version "2.0.5"
