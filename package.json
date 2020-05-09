@@ -22,7 +22,7 @@
     "tdd": "EMAIL_AMENDER_FAILING_TESTS=yep ava --watch"
   },
   "dependencies": {
-    "fuzzyset.js": "^0.0.8"
+    "fuzzyset.js": "^1.0.3"
   },
   "ava": {
     "files": [
