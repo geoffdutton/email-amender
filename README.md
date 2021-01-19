@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/email-amender.svg)](https://badge.fury.io/js/email-amender)
 [![codecov](https://codecov.io/gh/geoffdutton/email-amender/branch/master/graph/badge.svg)](https://codecov.io/gh/geoffdutton/email-amender) [![Known Vulnerabilities](https://snyk.io/test/github/geoffdutton/email-amender/badge.svg?targetFile=package.json)](https://snyk.io/test/github/geoffdutton/email-amender?targetFile=package.json)
 
-An opinionated library on how to correct fat-figured and mis-typed email addresses from user input.
+An opinionated library on how to correct fat-fingered and mis-typed email addresses from user input.
 
 ## How it Works
 1) It trims and lowercases the input email address. If it's falsy, i.e. it returns null.
